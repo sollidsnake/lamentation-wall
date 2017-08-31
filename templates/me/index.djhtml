@@ -45,7 +45,7 @@
               {% if user.is_anonymous %}
 
                 <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-                  Login<span class="caret"></span>
+                  Login <span class="caret"></span>
                 </a>
 
                 <ul class="dropdown-menu login-dropdown" role="menu">
@@ -61,7 +61,7 @@
                 </ul>
               {% else %}
                 <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-                  {{ user.first_name }}<span class="caret"></span>
+                  {{ user.first_name }} <span class="caret"></span>
                 </a>
 
                 <ul class="dropdown-menu login-dropdown" role="menu">
@@ -103,9 +103,9 @@
 
       </form>
 
-      <div class="well lamentations" id="lamentations">
-        <div id="lamentatios-reload">
-          {% if lamentations %}
+      {% if lamentations %}
+        <div class="well lamentations" id="lamentations">
+          <div id="lamentatios-reload">
             {% for lament in lamentations %}
               <div class="lament" id="lament-{{ lament.id }}">
                 <div>{{ lament.text|linebreaks }}</div>
@@ -147,9 +147,9 @@
                 </div>
               </div>
             {% endfor %}
-          {% endif %}
+          </div>
         </div>
-      </div>
+      {% endif %}
 
     </div>
 
