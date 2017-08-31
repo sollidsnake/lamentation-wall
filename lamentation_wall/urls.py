@@ -1,13 +1,13 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, url
 from django.views.generic import RedirectView
 from index_board import views
 
 from django.contrib import admin
 admin.autodiscover()
 
-urlpatterns = patterns('',
+urlpatterns = [
                        # Examples:
-                       # url(r'^$', 'lamentation_wall.views.home', name='home'),
+                       url(r'^$', views.index),
                        # url(r'^blog/', include('blog.urls')),
 
                        url(r"^accounts/profile/*", views.login),
@@ -27,4 +27,4 @@ urlpatterns = patterns('',
                        url(r'^google-login$', views.google_login),
                        url(r'auth/', include('social.apps.django_app.urls', namespace='social')),
                        url(r'^$', views.index),
-)
+]

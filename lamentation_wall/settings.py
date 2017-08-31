@@ -14,6 +14,10 @@ import dj_database_url
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+# dot env
+from dotenv import load_dotenv
+load_dotenv(os.path.join(os.path.dirname(__file__), '../.env'))
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
@@ -22,7 +26,22 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = True
 
 TEMPLATE_DEBUG = True
-TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates'),)
+TEMPLATES = [
+{
+    'BACKEND': 'django.template.backends.django.DjangoTemplates',
+    'DIRS': [os.path.join(BASE_DIR,'templates')],
+    'APP_DIRS': True,
+    'OPTIONS': {
+        'context_processors': [
+            'django.template.context_processors.debug',
+            'django.template.context_processors.request',
+            'django.contrib.auth.context_processors.auth',
+            'django.contrib.messages.context_processors.messages',
+
+        ],
+    },
+},] 
+
 
 ALLOWED_HOSTS = []
 
@@ -37,7 +56,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'index_board',
-    'social.apps.django_app.default',
+    'social_django',
     'compressor',
     'easy_timezones',
 )
@@ -56,6 +75,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'lamentation_wall.urls'
 
 GEOIP_DATABASE = os.path.join(BASE_DIR, 'tz', 'GeoLiteCity.dat')
+GEOIPV6_DATABASE = os.path.join(BASE_DIR, 'tz', 'GeoLiteCityv6.dat')
 
 WSGI_APPLICATION = 'lamentation_wall.wsgi.application'
 
@@ -138,9 +158,9 @@ COMPRESS_PRECOMPILERS = (
 
 # social auth
 AUTHENTICATION_BACKENDS = (
-    'social.backends.google.GoogleOAuth2',
-    'social.backends.twitter.TwitterOAuth',
-    'social.backends.facebook.FacebookOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.google.GooglePlusAuth',
+    'social_core.backends.google.GoogleOAuth2',
 )
 
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
