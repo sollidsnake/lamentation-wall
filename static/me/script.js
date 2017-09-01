@@ -107,6 +107,7 @@ var navheaderWidth;
 $(document).ready(function() {
     autoFocus('#id_lamentation-text');
 
+
     $('#counsel-form').submit(function() {
 	startLoading();
         if($('#counsel-form').parsley().validate()) {
@@ -144,6 +145,14 @@ if($.browser.mobile && $.browser.mozilla) {
 
 $(function () {
     //$('[data-toggle="popover"]').popover();
+
+    $('#lament-form').submit(function() {
+        if (grecaptcha.getResponse() == "") {
+            return false;
+        }
+
+        return true;
+    });
 
     $('[data-toggle="popover"]').popover({
         container: '#lamentations'

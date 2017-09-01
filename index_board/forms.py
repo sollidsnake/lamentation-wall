@@ -3,6 +3,9 @@ from parsley.decorators import parsleyfy
 
 from index_board.models import *
 
+from captcha.fields import ReCaptchaField
+
+
 @parsleyfy
 class LamentationForm(forms.ModelForm):
     

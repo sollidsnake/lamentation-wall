@@ -25,7 +25,6 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 DEBUG = True
 
-TEMPLATE_DEBUG = True
 TEMPLATES = [
 {
     'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -59,6 +58,7 @@ INSTALLED_APPS = (
     'social_django',
     'compressor',
     'easy_timezones',
+    'captcha',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -76,6 +76,21 @@ ROOT_URLCONF = 'lamentation_wall.urls'
 
 GEOIP_DATABASE = os.path.join(BASE_DIR, 'tz', 'GeoLiteCity.dat')
 GEOIPV6_DATABASE = os.path.join(BASE_DIR, 'tz', 'GeoLiteCityv6.dat')
+
+# RECAPTCHA_PUBLIC_KEY = '6LdD1i4UAAAAADN92ZaYGTblIF9W6nuzye1kytHn'
+# RECAPTCHA_PRIVATE_KEY = '6LdD1i4UAAAAAHR5S5gYSRijqySnk0OOAJpEL_9W'
+RECAPTCHA_PUBLIC_KEY = os.getenv('RECAPTCHA_PUBLIC_KEY',
+                                 '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI')
+
+RECAPTCHA_PRIVATE_KEY = os.getenv('RECAPTCHA_PRIVATE_KEY',
+                                  '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe')
+
+# RECAPTCHA_TESTING = True
+# RECAPTCHA_USE_SSL = False
+
+NOCAPTCHA = True
+# RECAPTCHA_PROXY = 'http://127.0.0.1:8000'
+
 
 WSGI_APPLICATION = 'lamentation_wall.wsgi.application'
 

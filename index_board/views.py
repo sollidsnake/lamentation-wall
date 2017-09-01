@@ -52,10 +52,14 @@ def index(request):
 
     for l in lamentations:
         l.calculate_user_cry(request.user)
-    
+
+
+    from lamentation_wall.settings import RECAPTCHA_PUBLIC_KEY
+
     return render(request, 'me/index.djhtml',
                   {'user': request.user,
                    'form': form,
+                   'rkey': RECAPTCHA_PUBLIC_KEY,
                    'counsel_form': CounselForm(prefix='counsel'),
                    'lamentations': lamentations})
 
