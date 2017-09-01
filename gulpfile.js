@@ -7,7 +7,7 @@ var cleanCSS = require('gulp-clean-css');
 gulp.task('js', function() {
     var files = ['./res/js/jquery-2.1.0.min.js',
                  './res/js/jquery.browser.min.js',
-                 './res/bootstrap/js/bootstrap.min.js',
+                 './node_modules/bootstrap/dist/js/bootstrap.min.js',
                  './res/js/parsley.min.js',
                  './res/me/generic.js',
                  './res/me/script.js',
@@ -20,7 +20,8 @@ gulp.task('js', function() {
 });
 
 gulp.task('css', function() {
-    var files = ['./res/bootstrap/css/bootstrap.css',
+    var files = ['./node_modules/bootstrap/dist/css/bootstrap.css',
+	         './node_modules/bootstrap/dist/css/bootstrap-theme.min.css',
                  './res/me/style.css'
                 ];
 
