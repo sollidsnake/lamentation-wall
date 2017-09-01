@@ -15,6 +15,8 @@ from django.utils import timezone
 from datetime import datetime
 import pytz
 import time
+from index_board.captcha_check import is_valid
+
 
 def index(request):
 
@@ -32,7 +34,7 @@ def index(request):
         
         form = LamentationForm(request.POST, prefix='lamentation')
 
-        if form.is_valid():
+        if form.is_valid() and is_valid(request):
             #if not too_much
             if True:
                 lament = form.save(commit=True)

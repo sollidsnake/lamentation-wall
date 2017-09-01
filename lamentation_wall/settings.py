@@ -58,7 +58,6 @@ INSTALLED_APPS = (
     'social_django',
     'compressor',
     'easy_timezones',
-    'captcha',
 )
 
 MIDDLEWARE_CLASSES = (
