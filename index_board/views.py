@@ -26,12 +26,14 @@ def index(request):
     visit.request_method = request.method
     visit.save()
 
+    too_much = PostRateModel.is_too_much(visit.ip, 'lament')
+
     if request.method == 'POST':
         
         form = LamentationForm(request.POST, prefix='lamentation')
 
         if form.is_valid():
-            #if not PostRateModel.is_too_much(visit.ip, 'lament'):
+            #if not too_much
             if True:
                 lament = form.save(commit=True)
 
@@ -59,6 +61,7 @@ def index(request):
     return render(request, 'me/index.djhtml',
                   {'user': request.user,
                    'form': form,
+                   'too_much': too_much,
                    'rkey': RECAPTCHA_PUBLIC_KEY,
                    'counsel_form': CounselForm(prefix='counsel'),
                    'lamentations': lamentations})

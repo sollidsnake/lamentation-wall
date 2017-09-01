@@ -8,7 +8,9 @@ from captcha.fields import ReCaptchaField
 
 @parsleyfy
 class LamentationForm(forms.ModelForm):
-    
+
+    captcha = ReCaptchaField(required=False)
+
     class Meta:
         fields = ('text',)
         model = LamentModel
