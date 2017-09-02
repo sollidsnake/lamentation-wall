@@ -1,0 +1,9 @@
+server {
+	listen 80;
+	server_name lamentacao.jessenazario.com;
+
+	location / {
+		include proxy_params;
+		proxy_pass http://unix:/home/jesse/code/lamentation-wall/lamentation.sock;
+	}
+}

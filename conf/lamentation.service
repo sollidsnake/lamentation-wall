@@ -1,0 +1,13 @@
+[Unit]
+Description=lamentation gunicorn instance
+After=network.target
+
+[Service]
+User=jesse
+Group=www-data
+WorkingDirectory=/home/jesse/code/lamentation-wall
+Environment="PATH=/home/jesse/code/lamentation-wall/venv/bin"
+ExecStart=/home/jesse/code/lamentation-wall/venv/bin/gunicorn --workers 3 --bind unix:lamentation.sock -m 007 lamentation_wall.wsgi
+
+[Install]
+WantedBy=multi-user.target
