@@ -5,6 +5,7 @@ from django.contrib.auth import login, logout as auth_logout
 
 from index_board.forms import LamentationForm, CounselForm, VisitModel, PostRateModel
 from index_board.models import *
+from index_board.captcha import check_recaptcha
 
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
@@ -32,7 +33,7 @@ def index(request):
         
         form = LamentationForm(request.POST, prefix='lamentation')
 
-        if form.is_valid():
+        if form.is_valid() and check_recaptcha(request):
             #if not too_much
             if True:
                 lament = form.save(commit=True)
