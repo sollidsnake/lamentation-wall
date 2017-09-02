@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" href="{% static "style.css" %}" type="text/css" />
     <link rel="shortcut icon" href="{% static "img/logo.png" %}" />
+    <script src='https://www.google.com/recaptcha/api.js?hl=pt'></script>
 
   </head>
 
@@ -88,9 +89,7 @@
 
           {{ form.text }}
 
-          {{ form.captcha }}
-          {% if too_much %}
-          {% endif %}
+          <div class="g-recaptcha" data-sitekey="{{ rkey }}"></div>
 
         </div>
 
