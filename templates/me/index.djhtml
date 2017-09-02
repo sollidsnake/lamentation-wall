@@ -15,6 +15,7 @@
   </head>
 
   <body class="body">
+    {% include "me/cry-together-modal.djhtml" %}
     <nav id="navheader" class="navbar navbar-default navbar-fixed-top navbar-static-top">
       <div class="container">
         <div class="navbar-header" >
@@ -36,11 +37,13 @@
           <ul class="nav navbar-nav navbar-right" role="menu">
 
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login <span class="caret"></span></a>
-
               {% if user.is_anonymous %}
 
-                <ul class="dropdown-menu">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                  Login <span class="caret"></span>
+                </a>
+
+                <ul class="dropdown-menu login-dropdown" role="menu">
 
                   <li><a href="{% url 'social:begin' 'google-oauth2' %}">
                     <img src="{% static "img/auth/google.png" %}" />
@@ -68,8 +71,6 @@
         </div>
       </div>
     </nav>
-
-    {% include "me/cry-together-modal.djhtml" %}
     
     <div class="fill container" id="container">
       <div id="loading-indicator" style="display: none;" >
